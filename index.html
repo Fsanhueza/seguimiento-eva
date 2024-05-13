@@ -28,14 +28,39 @@
         </ul>
     </nav>
     <div class="container">
+        <div class="company-selector">
+            <label for="company">Seleccionar Empresa:</label>
+            <select id="company">
+                <option value="todas">Todas</option>
+                <option value="contrato1">Contrato 1</option>
+                <option value="contrato2">Contrato 2</option>
+                <option value="contrato3">Contrato 3</option>
+            </select>
+        </div>
         <div class="column" id="evaluados">
             <h2>Evaluados</h2>
-            <div class="card" draggable="true" data-evaluacion="20/05/2024" data-competencias="Comunicación Efectiva, Trabajo Bajo Presión">
+            <input type="text" id="search" placeholder="Buscar por nombre">
+            <div class="card contrato1" draggable="true" data-evaluacion="13/05/2024" data-competencias="Trabajo en Equipo, Adaptabilidad">
+                <p><strong>Felipe Sanhueza</strong></p>
+                <p>Fecha de Evaluación: 13/05/2024</p>
+                <p>Competencias Más Bajas: Trabajo en Equipo, Adaptabilidad</p>
+            </div>
+            <div class="card contrato1" draggable="true" data-evaluacion="12/02/2024" data-competencias="Adaptabilidad, Comunicación Efectiva">
+                <p><strong>Ricardo Pizarro</strong></p>
+                <p>Fecha de Evaluación: 12/02/2024</p>
+                <p>Competencias Más Bajas: Adaptabilidad, Comunicación Efectiva</p>
+            </div>
+            <div class="card contrato2" draggable="true" data-evaluacion="01/05/2023" data-competencias="Comunicación Efectiva, Adaptabilidad">
+                <p><strong>Pedro Perez</strong></p>
+                <p>Fecha de Evaluación: 01/05/2023</p>
+                <p>Competencias Más Bajas: Comunicación Efectiva, Adaptabilidad</p>
+            </div>
+            <div class="card contrato3" draggable="true" data-evaluacion="20/05/2024" data-competencias="Capacidad Analítica, Comunicación Efectiva">
                 <p><strong>Carlos Calderon</strong></p>
                 <p>Fecha de Evaluación: 20/05/2024</p>
                 <p>Competencias Más Bajas: Capacidad Analítica, Comunicación Efectiva</p>
             </div>
-            <div class="card" draggable="true" data-evaluacion="20/05/2024" data-competencias="Comunicación Efectiva, Trabajo Bajo Presión">
+            <div class="card contrato3" draggable="true" data-evaluacion="20/05/2024" data-competencias="Comunicación Efectiva, Trabajo Bajo Presión">
                 <p><strong>Kattina Orellana</strong></p>
                 <p>Fecha de Evaluación: 20/05/2024</p>
                 <p>Competencias Más Bajas: Comunicación Efectiva, Trabajo Bajo Presión</p>

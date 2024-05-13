@@ -3,10 +3,14 @@ const columns = document.querySelectorAll('.column');
 const modal = document.getElementById('modal');
 const closeModal = document.querySelector('.close');
 const saveButton = document.getElementById('save');
+const searchInput = document.getElementById('search');
+const companySelector = document.getElementById('company');
 let currentCard = null;
+let originalColumn = null;
 
 cards.forEach(card => {
     card.addEventListener('dragstart', dragStart);
+    card.addEventListener('dragend', dragEnd);
 });
 
 columns.forEach(column => {
@@ -16,9 +20,15 @@ columns.forEach(column => {
 
 function dragStart(e) {
     currentCard = e.target;
+    originalColumn = currentCard.parentElement;
     setTimeout(() => {
         e.target.style.display = 'none';
     }, 0);
+}
+
+function dragEnd(e) {
+    e.target.style.display = 'block';
+    currentCard = null;
 }
 
 function dragOver(e) {
@@ -28,14 +38,17 @@ function dragOver(e) {
 function drop(e) {
     e.preventDefault();
     if (e.target.classList.contains('column')) {
-        const fromColumn = currentCard.parentElement.id;
+        const fromColumn = originalColumn.id;
         const toColumn = e.target.id || e.target.parentElement.id;
 
-        if (fromColumn === 'en-intervencion' && toColumn === 'intervenidos') {
+        if ((fromColumn === 'evaluados' || fromColumn === 'en-intervencion') && toColumn === 'intervenidos') {
             openModal();
         }
 
         e.target.appendChild(currentCard);
+        currentCard.style.display = 'block';
+    } else {
+        originalColumn.appendChild(currentCard);
         currentCard.style.display = 'block';
     }
 }
@@ -46,6 +59,10 @@ function openModal() {
 
 closeModal.onclick = function () {
     modal.style.display = 'none';
+    if (currentCard && originalColumn) {
+        originalColumn.appendChild(currentCard);
+        currentCard.style.display = 'block';
+    }
 }
 
 saveButton.onclick = function () {
@@ -60,11 +77,49 @@ saveButton.onclick = function () {
         currentCard.setAttribute('data-date', date);
         currentCard.setAttribute('data-competencias', competencias);
         modal.style.display = 'none';
+    } else {
+        originalColumn.appendChild(currentCard);
+        currentCard.style.display = 'block';
     }
 }
 
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = 'none';
+        if (currentCard && originalColumn) {
+            originalColumn.appendChild(currentCard);
+            currentCard.style.display = 'block';
+        }
     }
 }
+
+searchInput.addEventListener('input', function () {
+    const filter = searchInput.value.toLowerCase();
+    cards.forEach(card => {
+        const name = card.querySelector('strong').textContent.toLowerCase();
+        if (name.includes(filter)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
+
+companySelector.addEventListener('change', function () {
+    const selectedCompany = companySelector.value;
+    cards.forEach(card => {
+        if (selectedCompany === 'todas') {
+            card.style.display = '';
+        } else if (card.classList.contains(selectedCompany)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
+
+// Mostrar todas las tarjetas por defecto
+document.addEventListener('DOMContentLoaded', function () {
+    companySelector.value = 'todas';
+    companySelector.dispatchEvent(new Event('change'));
+});

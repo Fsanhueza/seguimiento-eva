@@ -48,8 +48,16 @@ nav ul {
 
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-start;
     padding: 20px;
+    flex-wrap: wrap;
+}
+
+.company-selector {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
 }
 
 .column {
@@ -59,6 +67,9 @@ nav ul {
     border-radius: 5px;
     width: 30%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 400px; /* Ajustar la altura mínima */
+    margin: 0 10px;
+    box-sizing: border-box;
 }
 
     .column h2 {
@@ -77,6 +88,14 @@ nav ul {
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .modal {
