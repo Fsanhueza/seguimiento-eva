@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Evaluaciones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>Rehavoiur</h1>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <p>Felipe AdminPignus</p>
+                <p>Pignus</p>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li>Analizar</li>
+            <li>Gestionar</li>
+            <li>Soporte</li>
+            <li>Cerrar Sesión</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="column" id="evaluados">
+            <h2>Evaluados</h2>
+            <div class="card" draggable="true" data-evaluacion="20/05/2024" data-competencias="Comunicación Efectiva, Trabajo Bajo Presión">
+                <p><strong>Carlos Calderon</strong></p>
+                <p>Fecha de Evaluación: 20/05/2024</p>
+                <p>Competencias Más Bajas: Capacidad Analítica, Comunicación Efectiva</p>
+            </div>
+            <div class="card" draggable="true" data-evaluacion="20/05/2024" data-competencias="Comunicación Efectiva, Trabajo Bajo Presión">
+                <p><strong>Kattina Orellana</strong></p>
+                <p>Fecha de Evaluación: 20/05/2024</p>
+                <p>Competencias Más Bajas: Comunicación Efectiva, Trabajo Bajo Presión</p>
+            </div>
+        </div>
+        <div class="column" id="en-intervencion">
+            <h2>En intervención</h2>
+        </div>
+        <div class="column" id="intervenidos">
+            <h2>Intervenidos/por reevaluar</h2>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detalles de la Intervención</h2>
+            <form>
+                <label for="intervention-type">Tipo de Intervención:</label>
+                <select id="intervention-type" name="intervention-type" multiple>
+                    <option value="taller">Taller</option>
+                    <option value="coaching">Coaching</option>
+                    <option value="charla">Charla</option>
+                    <option value="actividad">Actividad</option>
+                    <option value="microlearning">Microlearning</option>
+                </select><br>
+                <label for="details">Detalles:</label>
+                <textarea id="details" name="details" rows="4" cols="50"></textarea><br>
+                <label for="competencias">Competencias Intervenidas:</label>
+                <select id="competencias" name="competencias" multiple>
+                    <option value="comunicacion">Comunicación Efectiva</option>
+                    <option value="trabajo_presion">Trabajo Bajo Presión</option>
+                    <option value="capacidad_analitica">Capacidad Analítica</option>
+                    <option value="otra">Otra</option>
+                </select><br>
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date"><br>
+                <button type="button" id="save">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
